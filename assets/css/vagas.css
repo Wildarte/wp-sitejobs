@@ -1,0 +1,137 @@
+.container_vagas{
+    padding: 20px 10px;
+    align-items: flex-start;
+}
+.filters{
+    padding: 10px;
+    border: 1px solid var(--color-gray);
+    margin-right: 10px;
+    flex-basis: calc(25% - 10px);
+}
+.filters h3{
+    font-weight: 500;
+}
+.form_filter{
+    display: flex;
+    flex-direction: column;
+}
+.form_filter label{
+    margin: 5px;
+}
+.form_filter button[type='submit']{
+    position: relative;
+    border: none;
+    font-size: 1.2em;
+    font-weight: 400;
+    padding: 10px;
+    cursor: pointer;
+    transition: all .1s;
+}
+.form_filter button[type='submit']::after{
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    border-radius: 0 0 5px 5px;
+    background-color: var(--color-gray-two);
+}
+.form_filter button[type='submit']:hover{
+    transform: translateY(5px);
+}
+
+.form_filter button[type='submit']:hover::after{
+    bottom: -3px;
+    height: 3px;
+}
+.row_filter{
+    margin: 20px 0;
+}
+.board_filter{
+    width: 100%;
+    display: none;
+}
+.open_filter{
+    border: 1px solid var(--color-gray-two);
+    border-top: none;
+    cursor: pointer;
+}
+
+.list_jobs_vagas{
+    flex-basis: 75%;
+}
+.top_filter{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.btn_close_filter{
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.over_filter{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, .6);
+    opacity: .7;
+    cursor: pointer;
+}
+.open_over_filter{
+    display: block;
+}
+.top_filter{
+    display: none;
+}
+.bottom_vagas{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+}
+.bottom_vagas ul{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.bottom_vagas ul li{
+    margin: 0 5px;
+}
+.border_bottom_vagas{
+    width: 100%;
+    height: 50px;
+    background-color: var(--color-gray);
+    border: 1px solid var(--color-gray);
+}
+
+@media(max-width: 768px){
+    .list_jobs_vagas{
+        flex-basis: 100%;
+    }
+    .board_filter{
+        display: flex;
+    }
+    .top_filter{
+        display: flex;
+    }
+    .filters{
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: auto;
+        height: 100vh;
+        background-color: var(--color-white);
+        overflow: auto;
+        z-index: 10;
+        transition: all .23s;
+    }
+    .open_filters{
+        left: 0;
+    }
+}

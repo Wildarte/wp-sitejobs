@@ -1,0 +1,224 @@
+.top_post{
+    width: 100%;
+    justify-content: space-between;
+}
+.top_post a{
+    color: var(--color-blue);
+}
+.btn_candidatar{
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.post_left{
+    flex-basis: 70%;
+    border: 1px solid var(--color-gray-two);
+    border-radius: 2px;
+}
+.post_right{
+    flex-basis: 30%;
+}
+.title_post{
+    color: var(--color-blue);
+}
+.detalhes_vaga{
+    flex-basis: 65%;
+    padding-right: 10px;
+}
+.detalhes_vaga p{
+    line-height: 1.8em;
+}
+.detail_side{
+    flex-basis: 35%;
+    padding: 10px;
+}
+.board_detail{
+    border: 1px solid var(--color-gray-two);
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 20px;
+}
+.board_detail p{
+    font-size: .9em;
+    line-height: 1.5em;
+}
+.link_list li{
+    border-bottom: 1px solid var(--color-gray-two);
+    margin: 5px 0;
+}
+.link_list li a{
+    color: var(--color-blue);
+    font-size: .9em;
+    line-height: 2em;
+}
+.post_right{
+    padding-left: 10px;
+}
+.side_info_empresa{
+    border: 1px solid var(--color-gray-two);
+    border-radius: 8px;
+
+}
+.side_info_empresa img{
+    width: 100%;
+}
+.more_vagas_tags{
+    margin: 10px 0;
+}
+.more_vagas_tags ul{
+    margin: 10px 0;
+    padding: 10px 0;
+}
+.more_vagas_tags a{
+    text-decoration: none;
+    color: var(--color-gray-two);
+    padding: 8px 16px;
+    border: 1px solid;
+    border-radius: 3px;
+    margin: 10px 10px 5px 0px;
+}
+
+.bottom_vaga{
+    width: 100%;
+    padding: 10px;
+    border-top: 1px solid var(--color-gray-two);
+}
+.vagas_tips ul{
+    margin: 10px 0;
+}
+.vagas_tips li{
+    margin: 5px 0;
+}
+.vagas_tips li p{
+    font-size: .9em;
+    font-weight: 400;
+}
+.head_info_empresa{
+    background-color: #eeeeee;
+    border-radius: 8px 8px 0 0;
+}
+.head_info_empresa h4{
+    font-weight: 500;
+}
+
+
+.body_info_empresa p span{
+    color: var(--color-blue);
+}
+#cat_vaga{
+    padding: 2px 6px;
+    background-color: #777777;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 2px;
+}
+
+/* form apply */
+.top_form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.top_form h4{
+    font-size: 1.5em;
+    font-weight: 500;
+    color: var(--color-blue);
+}
+.close_form_apply{
+    cursor: pointer;
+}
+.form_apply_vaga{
+    max-width: 500px;
+    margin: auto;
+    background-color: var(--color-white);
+    border-radius: 8px;
+}
+.form_apply_vaga .form_group{
+    flex-direction: unset;
+    flex-wrap: wrap;
+}
+.form_apply_vaga .form_group label, .form_apply_vaga .form_group input{
+    width: 100%;
+}
+.send_apply{
+    padding: 5px 15px;
+    background-color: var(--color-blue);
+    border: none;
+    border-radius: 3px;
+    color: var(--color-white);
+    font-size: 1.1em;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.cancel_send_apply{
+    padding: 5px 15px;
+    background-color: var(--color-gray-two);
+    border: none;
+    border-radius: 3px;
+    color: var(--color-black);
+    font-size: 1.1em;
+    margin-right: 10px;
+    cursor: pointer
+}
+.over_form_apply{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, .6);
+}
+.open_over_form_apply{
+    display: flex;
+}
+
+/* form apply */
+
+
+@media(max-width: 768px){
+    .post_left, .post_right{
+        flex-basis: 100%;
+    }
+    .post_right{
+        padding-left: 0px;
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 500px){
+    .detalhes_vaga, .detail_side{
+        flex-basis: 100%;
+    }
+    .detail_side{
+        padding: 0;
+    }
+    .detalhes_vaga p{
+        font-size: .9;
+        line-height: 1.3em;
+    }
+    .title_post .post_left h2, .more_vagas_tags h2, .detalhes_vaga h2, .more_vagas_tags h2, .vagas_tips h2{
+        font-size: 1.2em;
+    }
+    .btn_candidatar{
+        font-size: 1.05em;
+    }
+    .top_post a{
+        font-size: .86em;
+    }
+    .header_list h3{
+        font-size: 1.03em;
+        font-weight: 600;
+    }
+    .header_list div a{
+        font-size: .8em;
+    }
+    #cat_vaga{
+        font-size: 10px;
+    }
+}
