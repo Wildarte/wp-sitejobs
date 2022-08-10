@@ -27,6 +27,16 @@
     <!-- wp footer -->
     <?php wp_footer() ?>
     <!-- wp footer -->
+    <script>
+        //url = <?= home_url() ?>;
+        const bf = document.getElementById('send_apply');
+        if(bf){
+            bf.addEventListener('click', (e) => {
+                e.preventDefault();
+                sendForm('<?= get_template_directory_uri() ?>/submit_form.php');
+            });
+        }
+    </script>
 
 </body>
 </html>

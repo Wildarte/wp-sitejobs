@@ -41,7 +41,35 @@ function cmb2_field_home(){
         'name' => 'Tarefas',
         'type' => 'text'
     ]);
+    $cmb2_info_vaga->add_field([
+        'id' => 'requisitos_vaga',
+        'name' => 'Requisitos',
+        'type' => 'text'
+    ]);
+
+
+    $cmb2_contato = new_cmb2_box([
+        'id' => 'contato',
+        'title' => 'Contato',
+        'object_types' => 'post'
+    ]);
+    $cmb2_contato->add_field([
+        'id' => 'email_contato',
+        'name' => 'Email para receber o currículo',
+        'type' => 'text_email'
+    ]);
     
+    $cmb2_link_vaga = new_cmb2_box([
+        'id' => 'link_vaga',
+        'title' => 'Link Externo',
+        'object_types' => 'post'
+    ]);
+    $cmb2_link_vaga->add_field([
+        'id' => 'link_externo_vaga',
+        'name' => 'Link Externo da Vaga',
+        'desc' => 'Coloque aqui o link para a vaga, <strong>Obs: Só preencha o campo se for uma vaga externa</strong>',
+        'type' => 'text_url'
+    ]);
     
 }
 add_action('cmb2_admin_init', 'cmb2_field_home');

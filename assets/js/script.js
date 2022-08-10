@@ -6,6 +6,8 @@ const over_filter = document.querySelector('.over_filter');
 const close_form_apply = document.querySelector('.close_form_apply');
 const over_form_apply = document.querySelector('.over_form_apply');
 
+let url = "";
+
 btn_menu.addEventListener('click', () => {
 
     header_right.classList.toggle('open_menu_mobile');

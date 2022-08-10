@@ -7,7 +7,7 @@
             <h2 class="title-default"><?= get_the_title() ?></h2>
 
             <section>
-                <?php get_the_content(); ?>
+                <?= get_the_content(); ?>
             </section>
 
         </section>

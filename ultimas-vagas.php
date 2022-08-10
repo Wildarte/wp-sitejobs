@@ -7,82 +7,14 @@ get_header();
 
     <section class="container_vagas container d-flex">
         <div class="top_post d-flex container p-10">
-            <a href=""><i class="bi bi-house-door-fill"></i> << Home</a>
+            <a href="<?= home_url() ?>"><i class="bi bi-house-door-fill"></i> << Home</a>
 
-            <a href=""><< Voltar para os Resultados</a>
+            <a href="<?= home_url() ?>/ultimas-vagas"><< Voltar para os Resultados</a>
         </div>
 
         <div class="filters">
-            <div class="top_filter">
-                <button class="btn_close_filter">
-                    <i class="bi bi-x-lg"></i>
-                </button>
-
-            </div>
-            <div class="row_filter">
-                <h3>Data da Publicação:</h3>
-
-                <hr class="line">
-
-                <form action="" class="form_filter">
-                    
-                    <label for="data_pub1">
-                        <input type="radio" name="data_pub" id="data_pub1"> 24 horas
-                    </label>
-
-                    <label for="data_pub2">
-                        <input type="radio" name="data_pub" id="data_pub2"> 3 dias
-                    </label>
-
-                    <label for="data_pub3">
-                        <input type="radio" name="data_pub" id="data_pub3"> 7 dias
-                    </label>
-
-                    <label for="data_pub4">
-                        <input type="radio" name="data_pub" id="data_pub4"> 30 dias
-                    </label>
-                    
-                    <button type="submit">
-                        Filtrar
-                    </button>
-                    
-                </form>
-            </div>
-
-            <div class="row_filter">
-                <h3>Tipo de Emprego</h3>
-
-                <hr class="line">
-
-                <form action="" class="form_filter">
-                    
-                    <label for="data_pub1">
-                        <input type="radio" name="data_pub" id="data_pub1"> Estágio
-                    </label>
-
-                    <label for="data_pub2">
-                        <input type="radio" name="data_pub" id="data_pub2"> Freelance
-                    </label>
-
-                    <label for="data_pub3">
-                        <input type="radio" name="data_pub" id="data_pub3"> Home Office
-                    </label>
-
-                    <label for="data_pub4">
-                        <input type="radio" name="data_pub" id="data_pub4"> Tempo Integral
-                    </label>
-
-                    <label for="data_pub4">
-                        <input type="radio" name="data_pub" id="data_pub4"> Temporário
-                    </label>
-                    
-                    <button type="submit">
-                        Filtrar
-                    </button>
-                    
-                </form>
-            </div>
-
+            
+            <?php get_template_part('template-parts/content', 'filter') ?>
 
         </div>
 
@@ -103,217 +35,97 @@ get_header();
 
                 <section class="count_jobs">
                 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                <?php
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
+                    //filter com meta_key e meta_value
+                    /*
+                    $args = [
+                        'post_type' => 'post',
+                        'meta_key' => 'salario',
+                        'meta_value' => 200,
+                        'posts_per_page' => -1
+                    ];
+                    */
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                    $args = [
+                        'post_type' => 'post',
+                    ];
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                    $results = new WP_Query($args);
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                    if($results->have_posts()):
+                        while($results->have_posts()):
+                            $results->the_post();
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                        ?>
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
+                            <article class="card_vaga">
+                                <a href="<?= get_permalink() ?>" class="title_vaga">
+                                    <?= get_the_title() ?>
+                                </a>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                                <div class="vaga_info">
+                                    <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                </div>
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                                <div class="vaga_text">
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                                    <?php
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                                        $funcao = get_post_meta(get_the_ID(), 'funcao_vaga', true);
+                                        $beneficios = get_post_meta(get_the_ID(), 'beneficios', true);
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                                    ?>
+                                    <p>
+                                        <span><strong>Função:</strong> </span>
+                                        <?= $funcao; ?> - <?= $funcao != "" ? "<span><strong>Benefícios:</strong>".$beneficios." </span>" : "" ?>
+                                    </p>
+                                </div>
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                                <div class="vaga_share" style="margin: 20px 0;">
+                                    <p>Compartilhar</p>
+                                    <ul class="vaga_share_list">
+                                        <li>
+                                            <a class="link_facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_the_permalink() ?>/"><i class="bi bi-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_whatsapp" href="https://whatsapp.com/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_twitter" href="https://twitter.com/intent/tweet?url=<?= get_the_permalink() ?>&text="><i class="bi bi-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_email" href="mailto:"><i class="bi bi-envelope-fill"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_linkedin" href="https://linkedin.com/shareArticle?mini=true&url=<?= get_the_permalink() ?>&title=<?= get_the_title() ?>"><i class="bi bi-linkedin"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_telegram" href="https://telegram.me/share/url?url=<?= get_the_permalink() ?>&text=<?= get_the_title() ?>"><i class="bi bi-telegram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                                <div class="apply_vaga">
+                                    <a href="">
+                                        <i class="bi bi-heart"></i> Salvar Trabalho
+                                    </a>
+                                    <a href="">
+                                        <i class="bi bi-envelope-fill"></i>
+                                        Envie seu currículo
+                                    </a>
+                                </div>
+                            </article>
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                        <?php
+                        endwhile;
+                    endif;
+                    wp_reset_query();
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
+                    ?>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
                 </section>
 
                 <div class="border_bottom_vagas">

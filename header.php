@@ -16,7 +16,7 @@
     <header class="header">
         <div class="header_content container d-flex">
             <div class="header_left d-flex">
-                <a href="" class="link_logo">
+                <a href="<?= home_url() ?>" class="link_logo">
                     <?php
                         $custom_logo_id = get_theme_mod( 'custom_logo' );
                         $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
@@ -27,11 +27,11 @@
             </div>
 
             <div class="header_right">
-                <a href="">
+                <a href="<?= home_url() ?>/ultimas-vagas">
                     <i class="bi bi-list-ul"></i>
                     Procurar vaga
                 </a>
-                <a href="" class="link_pub btn_blue">
+                <a href="<?= home_url() ?>/anunciar-vaga" class="link_pub btn_blue">
                     <i class="bi bi-plus-circle"></i>
                     Publicar Vaga
                 </a>

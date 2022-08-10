@@ -18,16 +18,19 @@
 .form_filter label{
     margin: 5px;
 }
-.form_filter button[type='submit']{
+.btn_filter{
     position: relative;
     border: none;
     font-size: 1.2em;
     font-weight: 400;
     padding: 10px;
     cursor: pointer;
+    text-align: center;
+    color: #111;
+    background: #ededed;
     transition: all .1s;
 }
-.form_filter button[type='submit']::after{
+.btn_filter::after{
     content: "";
     position: absolute;
     bottom: -5px;
@@ -37,11 +40,11 @@
     border-radius: 0 0 5px 5px;
     background-color: var(--color-gray-two);
 }
-.form_filter button[type='submit']:hover{
+.btn_filter:hover{
     transform: translateY(5px);
 }
 
-.form_filter button[type='submit']:hover::after{
+.btn_filter:hover::after{
     bottom: -3px;
     height: 3px;
 }

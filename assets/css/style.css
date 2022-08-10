@@ -28,7 +28,7 @@
     border: 1px solid var(--color-black);
     text-decoration: none;
 }
-.btn_default {
+.btn_default{
     background-color: transparent;
     color: var(--color-black)!important;
     padding: 10px 30px;
@@ -36,6 +36,9 @@
     border: 1px solid var(--color-black);
     text-decoration: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn_blue:hover{
     background-color: var(--color-orange);

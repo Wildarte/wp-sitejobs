@@ -3,6 +3,7 @@
     function wp_insert_scripts(){
 
         wp_enqueue_script('script', get_template_directory_uri().'/assets/js/script.js',[], '1.0', true);
+        wp_enqueue_script('sform', get_template_directory_uri().'/assets/js/sform.js',[], '1.0', true);
 
         wp_enqueue_style('reset', get_template_directory_uri().'/assets/css/reset.css', [], '1.0', 'all');
         wp_enqueue_style('style', get_template_directory_uri().'/assets/css/style.css', [], '1.0', 'all');
@@ -111,5 +112,6 @@
 
 
     require('admin/fields.php');
+    require('admin/fieldsSMTP.php');
 
 ?>
