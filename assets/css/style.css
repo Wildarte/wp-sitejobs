@@ -65,6 +65,7 @@
 .color-blue{
     color: var(--color-blue);
 }
+
 /* general style */
 
 header.header{
@@ -482,16 +483,22 @@ footer.footer{
         flex-basis: 100%;
     }
     .logo_footer{
-        margin-bottom: 20px;
-    }
-    .footer_content{
-        flex-direction: column-reverse;
+        margin-bottom: 30px!important;
     }
     .footer_content div{
         margin-bottom: 15px;
     }
     .footer_content h5{
         font-size: 1.1em;
+    }
+    .p-2-10{
+        padding: 1px 10px;
+    }
+    .form_group input{
+        padding: 2px;
+    }
+    .f-m-50{
+        flex-basis: 50%;
     }
 }
 

@@ -5,6 +5,7 @@ const open_filter = document.querySelector('.open_filter');
 const over_filter = document.querySelector('.over_filter');
 const close_form_apply = document.querySelector('.close_form_apply');
 const over_form_apply = document.querySelector('.over_form_apply');
+const cancel_send_apply = document.querySelector('.cancel_send_apply');
 
 let url = "";
 
@@ -55,6 +56,12 @@ function openForm(){
 
 if(close_form_apply){
     close_form_apply.addEventListener('click', function(){
+        document.querySelector('.over_form_apply').classList.remove('open_over_form_apply');
+    });    
+
+}
+if(cancel_send_apply){
+    cancel_send_apply.addEventListener('click', function(){
         document.querySelector('.over_form_apply').classList.remove('open_over_form_apply');
     });    
 

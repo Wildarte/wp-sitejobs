@@ -63,16 +63,21 @@ function sendForm(url){
 }
 */
 
+
+//send form by aajx
 $("form#data").submit(function(e) {
     e.preventDefault();    
 
     document.getElementById('send_apply').innerHTML = "Enviando...";
 
+    let name_apply = document.getElementById('formName').value;
+
+    document.getElementById("retorno_form").innerHTML = '<img src="'+url_site+'/assets/img/sending.gif">'
 
     var formData = new FormData(this);
 
     $.ajax({
-        url: url_site,
+        url: url_site+'/submit_form.php',
         type: 'POST',
         data: formData,
         success: function (data) {
@@ -84,14 +89,13 @@ $("form#data").submit(function(e) {
                     document.getElementById('send_apply').innerHTML = "Enviar";
                 break;
                 case "4":
-                    document.getElementById("retorno_form").innerHTML = "<strong style='color: red'> Preencha o campo </strong>";
+                    document.getElementById("retorno_form").innerHTML = "<strong style='color: red'> Preencha todos os campos e o anexo </strong>";
                     document.getElementById('send_apply').innerHTML = "Enviar";
                 break;
                 case "1":
                     document.getElementById("retorno_form").classList.add('bg-green');
-                    document.getElementById("retorno_form").innerHTML = "<strong> Inscrição realizada, agradecemos o contato </strong>";
+                    document.getElementById("retorno_form").innerHTML = "<strong> Tudo certo <strong>"+name_apply+"</strong>. Seu currículo foi enviado a empresa, BOA SORTE! </strong>";
                     document.getElementById('send_apply').innerHTML = "Enviar";
-                    alert("Agradecemos sua inscrição");
 
                     formName = document.getElementById("formName").value = "";
                     formLastName = document.getElementById("formLastName").value = "";
@@ -100,8 +104,8 @@ $("form#data").submit(function(e) {
 
                     setTimeout(function(){
                         document.getElementById("retorno_form").innerHTML = "";
-                    document.getElementById("retorno_form").classList.remove('bg-green');
-                    }, 2000)
+                        document.getElementById("retorno_form").classList.remove('bg-green');
+                    }, 3500)
                 break;
                 default:
                     document.getElementById("retorno_form").innerHTML = "<strong style='color: orange'>Erro desconhecido</strong>"+data;
@@ -166,14 +170,44 @@ if(btn_form){
 
 }
 
-function fg(e){
+const btn_contato = document.getElementById('btn_contato');
 
-    e.preventDefault();
+if(btn_contato){
+
+    btn_contato.addEventListener('click', (e) => {
+
+        e.preventDefault();
+        
+        let name = document.getElementById('contatoName').value;
+        let sobrenome = document.getElementById('contatoSobrenome').value;
+        let email = document.getElementById('contatoEmail').value;
+        let msg = document.getElementById('contatoMsg').value;
     
-    let ph = document.getElementById('formFile').value;
+        $.ajax({
+            method: 'POST',
+            url: 'https://formsubmit.co/ajax/wildarte10@gmail.com',
+            dataType: 'json',
+            accepts: 'application/json',
+            data: {
+                nome: name+" "+sobrenome,
+                email: email,
+                mensagem: msg,
+                _subject: "Contato do site Vagas de Emprego PE"
+            },
+            success: (data) => {
 
-    window.location.href = "http://localhost/wordpress/sitejobs/wp-content/themes/sitejobs/test_form.php?formFile="+ph;
-
-    console.log(ph);
+                alert('Agradecemos o contato')
+    
+                document.getElementById('contatoName').value = "";
+                document.getElementById('contatoSobrenome').value = "";
+                document.getElementById('contatoEmail').value = "";
+                document.getElementById('contatoMsg').value = "";
+            },
+            error: (err) => console.log(err)
+        });
+    
+    });
 
 }
+
+

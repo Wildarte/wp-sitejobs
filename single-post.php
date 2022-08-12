@@ -36,6 +36,8 @@
 
                         <p><strong>Descrição da Vaga:</strong> <span><?= get_the_content(); ?></span></p>
 
+                        <p><strong>Local:</strong> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?></p>
+
                         <p><strong>Salário:</strong> <?= get_post_meta(get_the_ID(), 'salario', true); ?></p>
 
                         <p><strong>Benefícios:</strong> <span> <?= get_post_meta(get_the_ID(), 'beneficios', true); ?></span></p>
@@ -182,7 +184,7 @@
                             if(get_post_meta(get_the_ID(), 'link_externo_vaga', true)):
                         ?>
 
-                        <a href="<?= get_post_meta(get_the_ID(), 'link_externo_vaga', true); ?>" class="btn_default" style="width: 100%; margin: 10px 0" onclick="openForm()">
+                        <a href="<?= get_post_meta(get_the_ID(), 'link_externo_vaga', true); ?>" class="btn_default" style="width: 100%; margin: 10px 0">
                             Enviar Currículo
                         </a>
 
@@ -319,15 +321,15 @@
                     <i class="bi bi-x"></i>
                 </div>
             </div>
-            <div id="retorno_form" class="bg-green">
+            <div id="retorno_form" class="">
                 
             </div>
             <div class="form_group d-flex">
-                <div class="f-50 p-10">
+                <div class="f-50 p-10 p-2-10 f-m-50">
                     <label for="">Nome:</label>
                     <input type="text" name="formName" id="formName" placeholder="Nome">
                 </div>
-                <div class="f-50 p-10">
+                <div class="f-50 p-10 p-2-10 f-m-50">
                     <label for="">Sobrenome:</label>
                     <input type="text" name="formLastName" id="formLastName" placeholder="Sobrenome">
                 </div>
@@ -337,22 +339,22 @@
             <input type="hidden" name="nulo_cut" id="nulo_cut">
             <input type="hidden" name="nulo_campo" id="nulo_campo">
 
-            <div class="form_group p-10">
+            <div class="form_group p-10 p-2-10">
                 <label for="">Seu E-mail</label>
-                <input type="email" name="formEmail" id="formEmail">
+                <input type="email" name="formEmail" id="formEmail" placeholder="E-mail">
             </div>
 
-            <div class="form_group p-10">
+            <div class="form_group p-10 p-2-10">
                 <label for="">Anexar Curriculo</label>
                 <input type="file" name="formFile" id="formFile">
             </div>
 
-            <div class="form_group p-10">
+            <div class="form_group p-10 p-2-10">
                 <label for="">Carta de Apresentação</label>
                 <textarea name="formMsg" id="formMsg" cols="30" rows="3"></textarea>
             </div>
 
-            <div class="form_group p-10">
+            <div class="form_group p-10 p-2-10">
                 <button type="submit" class="send_apply" id="send_apply">
                     Enviar
                 </button>

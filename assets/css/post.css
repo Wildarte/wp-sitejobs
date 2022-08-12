@@ -189,10 +189,14 @@
     width: 100%;
     padding: 10px;
     text-align: center;
-    color: #ffffff;
+}
+#retorno_form img{
+    height: 48px;
+    width: auto;
 }
 .bg-green{
     background-color: #009900;
+    color: #ffffff;
 }
 
 @media(max-width: 768px){
@@ -234,5 +238,15 @@
     }
     #cat_vaga{
         font-size: 12px;
+    }
+    .send_apply{
+        padding: 2px 12px;
+        font-size: 1em;
+    }
+    .form_apply_vaga .form_group label{
+        font-size: .9em;
+    }
+    .top_form h4{
+        font-size: 1.2em;
     }
 }

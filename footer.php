@@ -8,7 +8,7 @@
                     ?>
                     <img src="<?=  esc_url( $logo[0] )  ?>" alt="logo do site">
                 </a>
-
+                <h3>Sobre</h3>
                 <p>
                     O Vagas de Emprego Pe tem como missão garantir que todos tenham acesso as melhores vagas de emprego do estado de Pernambuco gratuitamente. Desta forma, cooperamos para que todas as pessoas obtenham sucesso em sua busca.
                 </p>
@@ -45,7 +45,7 @@
     <!-- wp footer -->
     <script>
       
-        url_site = '<?= get_template_directory_uri() ?>/submit_form.php';
+        url_site = '<?= get_template_directory_uri() ?>';
     </script>
 
 </body>

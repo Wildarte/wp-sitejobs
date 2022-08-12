@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
         echo "5"; //caso preencham os camapos ocultos
     else:
 
-        if(empty($_POST['formName']) || empty($_POST['formLastName']) || empty($_POST['formEmail']) || empty($_POST['formMsg'])):
+        if(empty($_POST['formName']) || empty($_POST['formLastName']) || empty($_POST['formEmail']) || empty($_POST['formMsg']) || empty($_FILES['formFile'])):
             echo "4"; //caso algum campo obrigatório esteja vazio
         else:
 
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
                 //Server settings
                 //$mail->SMTPDebug = 2;
                 //$mail->Debugoutput = 'html';
-                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
                 if($smtp_secure == "ssl/tls"){                                            //Send using SMTP
                     $mail->Host = "ssl://".$host;                     //Set the SMTP server to send through
@@ -120,7 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
 
                 $mail->addAttachment($attachment['tmp_name'], $attachment['name']);         //Add attachments
 
-                $mail->msgHTML("<html> <h3>Mensagem recebida do formulário de contato</h3> <p><strong>Nome: </strong> {$nome} {$lastNome} </p> <p> <strong>e-mail: </strong> {$replayTo} </p> 
+                $mail->msgHTML("<html> <h3>Candidato a vaga - {$nome}</h3> <p><strong>Nome: </strong> {$nome} {$lastNome} </p> <p> <strong>e-mail: </strong> {$replayTo} </p> 
                 <p> <strong>Carta de Apresentação:</strong> {$msg_carta}</p>
                 </html>");
 
