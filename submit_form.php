@@ -35,21 +35,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
             
             $attachment = $_FILES['formFile'];
 
-            //$host = "smtp.gmail.com";
-            //$username = "dollff1@gmail.com";
-            //$password = "game.2000";
-            //$port = "465";
-            //$smtp_email = "dollff1@gmail.com";
-            //$smtp_secure = "ssl/tls";
-            //$emailContato = "wildarte10@gmail.com";
-
-            $nome = "do site";
+            $nome = $_POST['formName'];
+            $lastNome = $_POST['formLastName'];
             $email = $_POST['emailSend'];
+            $replayTo = $_POST['formEmail'];
+            $msg_carta = $_POST['formMsg'];
             //$whatsapp = $_POST['whatsappForm'];
             //$mensagem = $_POST['mensagemForm'];
 
             $url = 'localhost';
-            $toEmail = 'wildarte10@gmail.com';
+            $toEmail = '';
             $emailServer = 'formulario@'.$url;
             $assunto = "Mensagem do formulário";
 
@@ -64,7 +59,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
 
                 $mail->CharSet = 'UTF-8';
                 //Set who the message is to be sent from
-                $mail->setFrom('from@'.$dominio, 'Mensagem do site');
+                $mail->setFrom('from@'.$dominio, 'Mensagem da Vaga');
                 //Set who the message is to be sent to
                 $mail->addReplyTo($email, $nome);
                 //Set the subject line
@@ -92,7 +87,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
                 //Server settings
                 //$mail->SMTPDebug = 2;
                 //$mail->Debugoutput = 'html';
-                //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
                 $mail->isSMTP();
                 if($smtp_secure == "ssl/tls"){                                            //Send using SMTP
                     $mail->Host = "ssl://".$host;                     //Set the SMTP server to send through
@@ -113,9 +108,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
                 //Recipients
                 $mail->CharSet = 'UTF-8';
                 //Set who the message is to be sent from
-                $mail->setFrom($smtp_email, 'Mensagem de '.$nome.'');
+                $mail->setFrom($smtp_email, 'Candidato a Vaga - '.$nome.'');
                 //Set an alternative reply-to address
-                $mail->addReplyTo($email, $nome);
+                $mail->addReplyTo($replayTo, $nome);
                 //Set who the message is to be sent to
                 $mail->addAddress($email);
                 //Set the subject line
@@ -123,16 +118,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'):
                 //Read an HTML message body from an external file, convert referenced images to embedded,
                 //convert HTML into a basic plain-text alternative body
 
-                if(isset($attachment['name'])){
-                    echo "existe name de arquivo";
-                    
-                }else{
-                    echo "não existe name de arquivo";
-                    var_dump($attachment);
-                }
-                //$mail->addAttachment($attachment['tmp_name'], $attachment['name']);         //Add attachments
+                $mail->addAttachment($attachment['tmp_name'], $attachment['name']);         //Add attachments
 
-                $mail->msgHTML("<html> <h3>Mensagem recebida do formulário de contato</h3> <p><strong>Nome: </strong> {$nome} </p> <p> <strong>e-mail: </strong> {$email} </p> </html>");
+                $mail->msgHTML("<html> <h3>Mensagem recebida do formulário de contato</h3> <p><strong>Nome: </strong> {$nome} {$lastNome} </p> <p> <strong>e-mail: </strong> {$replayTo} </p> 
+                <p> <strong>Carta de Apresentação:</strong> {$msg_carta}</p>
+                </html>");
 
                 if(!$mail->send()):
                     echo 'Mailer Error with SMTP: ' . $mail->ErrorInfo;

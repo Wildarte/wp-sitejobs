@@ -46,6 +46,11 @@ function cmb2_field_home(){
         'name' => 'Requisitos',
         'type' => 'text'
     ]);
+    $cmb2_info_vaga->add_field([
+        'id' => 'nome_empresa',
+        'name' => 'Nome da empresa',
+        'type' => 'text'
+    ]);
 
 
     $cmb2_contato = new_cmb2_box([

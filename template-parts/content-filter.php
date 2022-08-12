@@ -44,6 +44,12 @@
 
         <?php
 
+            $cat_current = "";
+
+            if(is_category()){
+                $cat_current = get_the_category()[0]->slug;
+            }
+
             $terms = get_terms([
                 'taxonomy' => 'category',
                 'hide_empty' => false,
@@ -52,19 +58,31 @@
             $count = 1;
             foreach($terms as $term):
                 ?>
-
-                <label for="data_filter<?= $count ?>">
-                    <input type="radio" name="data_filter" id="data_filter<?= $count ?>"> <?= $term->name; ?>
+                <label for="data_filter<?= $count ?>" class="filter_type">
+                    <input type="radio" name="data_filter" id="data_filter<?= $count ?>" data-link="<?= get_category_link($term->term_id) ?>" <?= $cat_current == $term->slug ? "checked" : "" ?>> <?= $term->name; ?>
                 </label>
-
-                
                 
             <?php $count++; endforeach; ?>
         
-        <a class="btn_filter" href="<?= home_url(); ?>/?s=">
+        <a class="btn_filter" id="link_type" href="<?= home_url(); ?>/?s=">
             Filtrar
         </a>
         
+        <script>
+            const filter_type = document.querySelectorAll('.filter_type');
+
+            filter_type.forEach((item, index) => {
+
+                item.addEventListener('click', function(){
+
+                    let link_item = item.querySelector('input').getAttribute('data-link');
+
+                    document.getElementById('link_type').setAttribute('href', link_item);
+
+                });
+
+            });
+        </script>
     </div>
 
 </div>

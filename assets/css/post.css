@@ -33,6 +33,7 @@
 }
 .detalhes_vaga p{
     line-height: 1.8em;
+    margin-bottom: 12px;
 }
 .detail_side{
     flex-basis: 35%;
@@ -232,6 +233,6 @@
         font-size: .8em;
     }
     #cat_vaga{
-        font-size: 10px;
+        font-size: 12px;
     }
 }

@@ -5,10 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    
     <title><?php bloginfo('name') ?></title>
     <!-- wp head -->
     <?php wp_head(); ?>
     <!-- wp head -->
+    <?php if(is_single()): ?>
+    
+    <meta name="description" content="<?= get_the_excerpt() ?>">
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="<?= get_the_permalink() ?>" />
+    <meta name="author" content="<?= get_the_author() ?>">
+    <meta name="creator" content="<?= get_the_author() ?>">
+
+    <meta property="og:url" content="<?= get_the_permalink() ?>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="<?= get_the_title() ?>" />
+    <meta property="og:description" content="<?= get_the_excerpt() ?>" />
+    <meta property="og:image" content="<?= the_post_thumbnail_url() ?>" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?= get_the_title() ?>">
+    <meta name="twitter:description" content="<?= get_the_excerpt() ?>">
+    <meta name="twitter:image" content="<?= the_post_thumbnail_url() ?>">
+
+    
+
+    <?php endif; ?>
 
 </head>
 <body>

@@ -21,7 +21,7 @@
                 <hr class="line">
 
                 <div class="vaga_info p-10">
-                    <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco 
+                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> Pernambuco 
                 </div>
 
                 <div class="detalhe_info d-flex p-10">
@@ -51,13 +51,13 @@
                                     <a class="link_facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_the_permalink() ?>/"><i class="bi bi-facebook"></i></a>
                                 </li>
                                 <li>
-                                    <a class="link_whatsapp" href="https://whatsapp.com/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
+                                    <a class="link_whatsapp" href="https://wa.me/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
                                 </li>
                                 <li>
                                     <a class="link_twitter" href="https://twitter.com/intent/tweet?url=<?= get_the_permalink() ?>&text="><i class="bi bi-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a class="link_email" href="mailto:"><i class="bi bi-envelope-fill"></i></a>
+                                    <a class="link_email" href="mailto:?subject=<?= get_the_title() ?>&body=<?= get_the_permalink() ?>"><i class="bi bi-envelope-fill"></i></a>
                                 </li>
                                 <li>
                                     <a class="link_linkedin" href="https://linkedin.com/shareArticle?mini=true&url=<?= get_the_permalink() ?>&title=<?= get_the_title() ?>"><i class="bi bi-linkedin"></i></a>
@@ -88,13 +88,13 @@
                     <div class="detail_side">
 
                         <div class="board_detail">
-                            <p><strong>Empresa:</strong> <span>Confidencial</span></p>
+                            <p><strong>Empresa:</strong> <span class="color-blue"><?= get_post_meta(get_the_ID(), 'nome_empresa', true); ?></span></p>
 
-                            <p><strong>Salário:</strong> <span><?= get_post_meta(get_the_ID(), 'salario', true); ?></span></p>
+                            <p><strong>Salário:</strong> <span class="color-blue"><?= get_post_meta(get_the_ID(), 'salario', true); ?></span></p>
 
-                            <p><strong>Tipo de emprego:</strong> <span><?= get_the_category()[0]->name ?></span></p>
+                            <p><strong>Tipo de emprego:</strong> <span class="color-blue"><?= get_the_category()[0]->name ?></span></p>
 
-                            <p><strong>Localização:</strong> <span><?= get_post_meta(get_the_ID(), 'local_vaga', true); ?></span>, <span>Pernambuco</span></p>
+                            <p><strong>Localização:</strong> <span class="color-blue"><?= get_post_meta(get_the_ID(), 'local_vaga', true); ?></span>, <span class="color-blue">Pernambuco</span></p>
                         </div>
 
                         <ul class="link_list">
@@ -143,7 +143,7 @@
                         if(get_post_meta(get_the_ID(), 'link_externo_vaga', true)):
                     ?>
 
-                    <a href="<?= get_post_meta(get_the_ID(), 'link_externo_vaga', true) ?>" class="link_pub btn_blue btn_candidatar" onclick="openForm()">
+                    <a href="<?= get_post_meta(get_the_ID(), 'link_externo_vaga', true) ?>" class="link_pub btn_blue btn_candidatar">
                         CANDIDATE-SE NESTA VAGA
                     </a>
 
@@ -172,9 +172,9 @@
                     </div>
 
                     <div class="body_info_empresa p-10">
-                        <img src="https://images.pexels.com/photos/1181524/pexels-photo-1181524.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                        <img src="<?= the_post_thumbnail_url() ?>" alt="">
 
-                        <h4>Confidencial</h4>
+                        <h4><?= get_post_meta(get_the_ID(), 'nome_empresa', true); ?></h4>
 
                         <p>Localização: <span><?= get_post_meta(get_the_ID(), 'local_vaga', true); ?></span>, <span>Pernambuco</span></p>
 
@@ -199,12 +199,12 @@
 
             </div>
 
-            <section class="list_jobs" style="margin-top: 10px; border-radius: 10px 10px 0 0; overflow: hidden">
+            <section class="list_jobs" style="margin-top: 10px; border-radius: 10px 10px 0 0; overflow: hidden; width: 100%" >
                 <header class="header_list">
                     <h3>- Vagas de emprego recentes</h3>
 
                     <div>
-                        <a href="">
+                        <a href="<?= home_url() ?>/ultimas-vagas">
                             Mais Vagas <i class="bi bi-list-ul"></i>
                         </a>
                     </div>
@@ -213,217 +213,97 @@
 
                 <section class="count_jobs">
                 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                <?php
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
+                    //filter com meta_key e meta_value
+                    /*
+                    $args = [
+                        'post_type' => 'post',
+                        'meta_key' => 'salario',
+                        'meta_value' => 200,
+                        'posts_per_page' => -1
+                    ];
+                    */
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                    $args = [
+                        'post_type' => 'post',
+                    ];
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                    $results = new WP_Query($args);
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                    if($results->have_posts()):
+                        while($results->have_posts()):
+                            $results->the_post();
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                        ?>
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
+                            <article class="card_vaga">
+                                <a href="<?= get_permalink() ?>" class="title_vaga">
+                                    <?= get_the_title() ?>
+                                </a>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                                <div class="vaga_info">
+                                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                </div>
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                                <div class="vaga_text">
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                                    <?php
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                                        $funcao = get_post_meta(get_the_ID(), 'funcao_vaga', true);
+                                        $beneficios = get_post_meta(get_the_ID(), 'beneficios', true);
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+                                    ?>
+                                    <p>
+                                        <span><strong>Função:</strong> </span>
+                                        <?= $funcao; ?> - <?= $funcao != "" ? "<span><strong>Benefícios:</strong>".$beneficios." </span>" : "" ?>
+                                    </p>
+                                </div>
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                                <div class="vaga_share" style="margin: 20px 0;">
+                                    <p>Compartilhar</p>
+                                    <ul class="vaga_share_list">
+                                        <li>
+                                            <a class="link_facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_the_permalink() ?>/"><i class="bi bi-facebook"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_whatsapp" href="https://wa.me/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_twitter" href="https://twitter.com/intent/tweet?url=<?= get_the_permalink() ?>&text="><i class="bi bi-twitter"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_email" href="mailto:?subject=<?= get_the_title() ?>&body=<?= get_the_permalink() ?>"><i class="bi bi-envelope-fill"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_linkedin" href="https://linkedin.com/shareArticle?mini=true&url=<?= get_the_permalink() ?>&title=<?= get_the_title() ?>"><i class="bi bi-linkedin"></i></a>
+                                        </li>
+                                        <li>
+                                            <a class="link_telegram" href="https://telegram.me/share/url?url=<?= get_the_permalink() ?>&text=<?= get_the_title() ?>"><i class="bi bi-telegram"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
 
-                    <article class="card_vaga">
-                        <a href="" class="title_vaga">
-                            Almoxarifado
-                        </a>
+                                <div class="apply_vaga">
+                                    <a href="<?= get_permalink() ?>">
+                                        <i class="bi bi-envelope-fill"></i>
+                                        Envie seu currículo
+                                    </a>
+                                </div>
+                            </article>
 
-                        <div class="vaga_info">
-                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> Pernambuco
-                        
-                        </div>
+                        <?php
+                        endwhile;
 
-                        <div class="vaga_text">
-                            <p>
-                                <span>Função</span>
-                                Almoxarife Descrição da vaga Local: Rio de Janeiro/RJ Salário: à combinar Benefícios: à combinar Fone: 24 3356-6090
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet ea unde tenetur nisi asperiores, odit nesciunt deserunt, recusandae error excepturi blanditiis corrupti dolores suscipit? Labore placeat nulla esse minus magnam?
-                            </p>
-                        </div>
 
-                        <div class="vaga_share">
-                            <p>Compartilhar</p>
-                            <ul class="vaga_share_list">
-                                <li>
-                                    <a class="link_facebook" href=""><i class="bi bi-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_whatsapp" href=""><i class="bi bi-whatsapp"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_twitter" href=""><i class="bi bi-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_email" href=""><i class="bi bi-envelope-fill"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_linkedin" href=""><i class="bi bi-linkedin"></i></a>
-                                </li>
-                                <li>
-                                    <a class="link_telegram" href=""><i class="bi bi-telegram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
 
-                        <div class="apply_vaga">
-                            <a href="">
-                                <i class="bi bi-heart"></i> Salvar Trabalho
-                            </a>
-                            <a href="">
-                                <i class="bi bi-envelope-fill"></i>
-                                Envie seu currículo
-                            </a>
-                        </div>
-                    </article>
+                    endif;
+
+                    wp_reset_query();
+
+                ?>
                 </section>
             </section>
 
@@ -432,7 +312,7 @@
     </section>
 
     <div class="over_form_apply">
-        <form action="" class="form_apply_vaga open_apply_form" enctype="multipart/form-data" method="POST">
+        <form id="data" action="" class="form_apply_vaga open_apply_form" enctype="multipart/form-data" method="POST">
             <div class="top_form">
                 <h4>Cadastre-se</h4>
                 <div class="close_form_apply">
@@ -449,17 +329,17 @@
                 </div>
                 <div class="f-50 p-10">
                     <label for="">Sobrenome:</label>
-                    <input type="text" name="" id="formLastName" placeholder="Sobrenome">
+                    <input type="text" name="formLastName" id="formLastName" placeholder="Sobrenome">
                 </div>
             </div>
 
-            <input type="hidden" name="" id="emailSend" value="<?= get_post_meta(get_the_ID(), 'email_contato', true); ?>">
+            <input type="hidden" name="emailSend" id="emailSend" value="<?= get_post_meta(get_the_ID(), 'email_contato', true); ?>">
             <input type="hidden" name="nulo_cut" id="nulo_cut">
             <input type="hidden" name="nulo_campo" id="nulo_campo">
 
             <div class="form_group p-10">
                 <label for="">Seu E-mail</label>
-                <input type="email" name="" id="formEmail">
+                <input type="email" name="formEmail" id="formEmail">
             </div>
 
             <div class="form_group p-10">
@@ -469,7 +349,7 @@
 
             <div class="form_group p-10">
                 <label for="">Carta de Apresentação</label>
-                <textarea name="" id="formMsg" cols="30" rows="3"></textarea>
+                <textarea name="formMsg" id="formMsg" cols="30" rows="3"></textarea>
             </div>
 
             <div class="form_group p-10">
@@ -478,7 +358,7 @@
                 </button>
                 <span class="cancel_send_apply">
                     Fechar
-</span>
+                </span>
             </div>
         </form>
     </div>

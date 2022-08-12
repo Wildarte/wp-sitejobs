@@ -8,11 +8,11 @@ get_header();
         <section class="hero">
             <div class="hero_content">
                 <div class="board_search">
-                    <h1>Encontre a vaga de emprego ideal perto de você</h1>
-                    <form action="" class="search">
+                    <h1>SEU EMPREGO A UM CLIQUE DE VOCÊ</h1>
+                    <form action="<?= home_url() ?>" class="search">
                         <label for="">
                             <i class="bi bi-files"></i>
-                            <input type="search" name="" id="" placeholder="Busque por uma vaga">
+                            <input type="search" name="s" id="" placeholder="Busque por uma vaga">
                         </label>
                         
                         <button type="submit">
@@ -25,14 +25,16 @@ get_header();
         </section>
 
         <section class="section_jobs">
+
             <div class="section_jobs_content container">
 
                 <section class="list_jobs">
                     <header class="header_list">
+                        
                         <h3>- Vagas de emprego recentes</h3>
 
                         <div>
-                            <a href="">
+                            <a href="<?= home_url() ?>/ultimas-vagas">
                                 Mais Vagas <i class="bi bi-list-ul"></i>
                             </a>
                         </div>
@@ -42,7 +44,6 @@ get_header();
                     <section class="count_jobs">
 
                         <?php
-
 
                             //filter com meta_key e meta_value
                             /*
@@ -72,7 +73,7 @@ get_header();
                                         </a>
 
                                         <div class="vaga_info">
-                                            <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                            <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                         </div>
 
                                         <div class="vaga_text">
@@ -87,6 +88,7 @@ get_header();
                                             <p>
                                                 <span><strong>Função:</strong> </span>
                                                 <?= $funcao; ?> - <?= $funcao != "" ? "<span><strong>Benefícios:</strong>".$beneficios." </span>" : "" ?>
+                                                <strong>Descrição da Vaga</strong> <?= get_the_excerpt() ?>
                                             </p>
                                         </div>
 
@@ -97,13 +99,13 @@ get_header();
                                                     <a class="link_facebook" href="https://www.facebook.com/sharer/sharer.php?u=<?= get_the_permalink() ?>/"><i class="bi bi-facebook"></i></a>
                                                 </li>
                                                 <li>
-                                                    <a class="link_whatsapp" href="https://whatsapp.com/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
+                                                    <a class="link_whatsapp" href="https://wa.me/send?text=<?= get_the_permalink() ?>"><i class="bi bi-whatsapp"></i></a>
                                                 </li>
                                                 <li>
                                                     <a class="link_twitter" href="https://twitter.com/intent/tweet?url=<?= get_the_permalink() ?>&text="><i class="bi bi-twitter"></i></a>
                                                 </li>
                                                 <li>
-                                                    <a class="link_email" href="mailto:"><i class="bi bi-envelope-fill"></i></a>
+                                                    <a class="link_email" href="mailto:?subject=<?= get_the_title() ?>&body=<?= get_the_permalink() ?>"><i class="bi bi-envelope-fill"></i></a>
                                                 </li>
                                                 <li>
                                                     <a class="link_linkedin" href="https://linkedin.com/shareArticle?mini=true&url=<?= get_the_permalink() ?>&title=<?= get_the_title() ?>"><i class="bi bi-linkedin"></i></a>
@@ -115,10 +117,7 @@ get_header();
                                         </div>
 
                                         <div class="apply_vaga">
-                                            <a href="">
-                                                <i class="bi bi-heart"></i> Salvar Trabalho
-                                            </a>
-                                            <a href="">
+                                            <a href="<?= get_permalink() ?>">
                                                 <i class="bi bi-envelope-fill"></i>
                                                 Envie seu currículo
                                             </a>
@@ -127,17 +126,19 @@ get_header();
 
                                    <?php
                                 endwhile;
+                            
+                            
+
                             endif;
+                            
                             wp_reset_query();
 
                         ?>
-
-
                         
                     </section>
 
                     <div class="more_vagas">
-                        <a href="" class="link_more_vagas">
+                        <a href="<?= home_url() ?>/ultimas-vagas" class="link_more_vagas">
                             <i class="bi bi-briefcase"></i>
                             VER TODAS AS VAGAS
                         </a>
