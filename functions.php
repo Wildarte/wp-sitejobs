@@ -114,18 +114,17 @@
 
 
 
-   /** Pagination */
-    function pagination_funtion() {
-        // Get total number of pages
-        global $wp_query;
-        $total = $wp_query->max_num_pages;
-        // Only paginate if we have more than one page                   
-        if ( $total > 1 )  {
-            // Get the current page
-            if ( !$current_page = get_query_var('paged') ){ 
-                $current_page = 1;
-            };
-                            
+/** Pagination */
+function pagination_funtion() {
+    // Get total number of pages
+    global $wp_query;
+    $total = $wp_query->max_num_pages;
+    // Only paginate if we have more than one page                   
+    if ( $total > 1 )  {
+        // Get the current page
+        if ( !$current_page = get_query_var('paged') )
+            $current_page = 1;
+                               
             $big = 999999999;
             // Structure of "format" depends on whether we’re using pretty permalinks
             $permalink_structure = get_option('permalink_structure');
@@ -141,6 +140,47 @@
         }
     }
     /** END Pagination */
+
+    if ( ! function_exists( 'pietergoosen_pagination' ) ) :
+
+        function pietergoosen_pagination($pages = '', $range = 2) {   
+           $showitems = ($range * 2)+1;  
+    
+          global $paged;
+          if(empty($paged)) $paged = 1;
+    
+              if($pages == '')
+              {
+                 global $wp_query;
+                 $pages = $wp_query->max_num_pages;
+                    if(!$pages)
+                    {
+                    $pages = 1;
+                    }
+                }   
+    
+               if(1 != $pages)
+              {
+                $string = _x( 'Page %1$s of %2$s' , '%1$s = current page, %2$s = all pages' , 'pietergoosen' );
+                echo "<div class='pagination'><span>" . sprintf( $string, $paged, $pages ) . "</span>";
+                  if($paged > 2 && $paged > $range+1 && $showitems < $pages) echo "<a href='".get_pagenum_link(1)."'>" . __( '&laquo; First', 'pietergoosen' ) . "</a>";
+                 if($paged > 1 && $showitems < $pages) echo "<a href='".get_pagenum_link($paged - 1)."'>" . __( '&lsaquo; Previous', 'pietergoosen' ) . "</a>";
+    
+                    for ($i=1; $i <= $pages; $i++)
+                    {
+                       if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems ))
+                       {
+                            echo ($paged == $i)? "<span class=\"current\">".$i."</span>":"<a href='".get_pagenum_link($i)."' class=\"inactive\">".$i."</a>";
+                       }
+                   }
+    
+                   if ($paged < $pages && $showitems < $pages) echo "<a href='" . get_pagenum_link($paged + 1)."'>" . __( 'Next &rsaquo;', 'pietergoosen' ) . "</a>";
+                   if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) echo "<a href='".get_pagenum_link($pages)."'>" . __( 'Last &raquo;', 'pietergoosen' ) . "</a>";
+                   echo "</div>\n";
+             }
+            } //  pietergoosen_pagination
+    
+    endif;
 
     require('admin/fields.php');
     require('admin/fieldsSMTP.php');

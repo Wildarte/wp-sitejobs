@@ -314,7 +314,7 @@ footer.footer{
     font-size: 1.2em;
     font-weight: 500;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
 }
 .footer_content ul li a{
     color: var(--color-black);
@@ -328,7 +328,9 @@ footer.footer{
 .logo_footer p{
     font-size: .9em;
 }
-
+.control_posts a{
+    color: var(--color-blue);
+}
 
 
 /* menu mobile */

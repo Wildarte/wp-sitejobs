@@ -6,9 +6,10 @@ get_header();
     <main>
 
         <section class="hero">
-            <div class="hero_content">
+            <div class="hero_content" style="background-image: url('<?= get_post_meta(get_the_ID(), 'img_header', true); ?>');">
                 <div class="board_search">
-                    <h1>SEU EMPREGO A UM CLIQUE DE VOCÊ</h1>
+                    <h1><?= get_post_meta(get_the_ID(), 'title_home', true); ?></h1>
+                    
                     <form action="<?= home_url() ?>" class="search">
                         <label for="">
                             <i class="bi bi-files"></i>
@@ -24,6 +25,8 @@ get_header();
             </div>
         </section>
 
+
+        
         <section class="section_jobs">
 
             <div class="section_jobs_content container">
@@ -73,7 +76,7 @@ get_header();
                                         </a>
 
                                         <div class="vaga_info">
-                                            <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                            <i class="bi bi-stopwatch"></i> <?=  get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                         </div>
 
                                         <div class="vaga_text">

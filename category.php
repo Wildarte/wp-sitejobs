@@ -68,7 +68,7 @@ get_header();
                                 </a>
 
                                 <div class="vaga_info">
-                                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                    <i class="bi bi-stopwatch"></i> <?= get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                 </div>
 
                                 <div class="vaga_text">
@@ -121,7 +121,7 @@ get_header();
                         <?php
                         endwhile;
                     endif;
-                    wp_reset_query();
+                    //wp_reset_query();
 
                 ?>
                 </section>

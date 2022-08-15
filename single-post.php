@@ -21,14 +21,14 @@
                 <hr class="line">
 
                 <div class="vaga_info p-10">
-                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> Pernambuco 
+                    <i class="bi bi-stopwatch"></i> <?= get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> Pernambuco 
                 </div>
 
                 <div class="detalhe_info d-flex p-10">
 
                     <div class="detalhes_vaga">
 
-                        <h2>Destalhes da Vaga:</h2>
+                        <h2>Detalhes da Vaga:</h2>
 
                         <hr class="line">
 
@@ -246,7 +246,7 @@
                                 </a>
 
                                 <div class="vaga_info">
-                                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                    <i class="bi bi-stopwatch"></i> <?= get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                 </div>
 
                                 <div class="vaga_text">

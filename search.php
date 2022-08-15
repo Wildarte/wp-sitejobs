@@ -60,7 +60,7 @@ get_header();
                                 </a>
 
                                 <div class="vaga_info">
-                                    <i class="bi bi-stopwatch"></i> 1 dia atrás <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                    <i class="bi bi-stopwatch"></i> <?= get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                 </div>
 
                                 <div class="vaga_text">
@@ -103,10 +103,7 @@ get_header();
                                 </div>
 
                                 <div class="apply_vaga">
-                                    <a href="">
-                                        <i class="bi bi-heart"></i> Salvar Trabalho
-                                    </a>
-                                    <a href="">
+                                    <a href="<?= get_the_permalink() ?>">
                                         <i class="bi bi-envelope-fill"></i>
                                         Envie seu currículo
                                     </a>
@@ -130,7 +127,7 @@ get_header();
 
             <div class="bottom_vagas">
 
-            
+                <?php get_template_part('template-parts/content','pagination'); ?>
 
             </div>
 
