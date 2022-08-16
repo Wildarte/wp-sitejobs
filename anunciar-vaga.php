@@ -1,5 +1,8 @@
 <?php
 // Template Name: Anunciar Vaga
+
+use WPForms\Admin\Builder\Templates;
+
 get_header();
 ?>
 
@@ -104,6 +107,8 @@ get_header();
             </div>
         </section>
     </section>
+
+
 
 </main>
 

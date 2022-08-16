@@ -48,15 +48,15 @@ get_header();
                     ];
                     */
 
-                    $args = [
-                        'post_type' => 'post',
-                    ];
+                    //$args = [
+                    //    'post_type' => 'post',
+                    //];
 
-                    $results = new WP_Query($args);
+                    //$results = new WP_Query($args);
 
-                    if($results->have_posts()):
-                        while($results->have_posts()):
-                            $results->the_post();
+                    if(have_posts()):
+                        while(have_posts()):
+                            the_post();
 
                         ?>
 
@@ -67,9 +67,9 @@ get_header();
                                 </a>
 
                                 <div class="vaga_info">
-                                    <i class="bi bi-stopwatch"></i> <?= the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
+                                    <i class="bi bi-stopwatch"></i> <?= get_the_date('d/m/Y') ?> <i class="bi bi-geo-alt-fill"></i> <?= get_post_meta(get_the_ID(), 'local_vaga', true); ?> 
                                 </div>
-
+                              
                                 <div class="vaga_text">
 
                                     <?php

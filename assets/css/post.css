@@ -198,6 +198,9 @@
     background-color: #009900;
     color: #ffffff;
 }
+.detalhes_vaga img{
+    max-width: 100%;
+}
 
 @media(max-width: 768px){
     .post_left, .post_right{

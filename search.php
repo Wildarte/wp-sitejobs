@@ -40,17 +40,17 @@ get_header();
 
                     //get_search_form(); //obtem o formulário de pesquisa
 
-                    $args_search = [
+                    $args = [
                         'post_type' => 'post',
-                        's' => get_search_query()
                     ];
+                    
 
-                    $result_search = new WP_Query($args_search);
+                    $results = new WP_Query($args);
 
-                    if($result_search->have_posts()):
+                    if($results->have_posts()):
 
-                        while($result_search->have_posts()):
-                            $result_search->the_post();
+                        while($results->have_posts()):
+                            $results->the_post();
 
                 ?>
 
@@ -112,7 +112,7 @@ get_header();
 
                             <?php
 
-                                endwhile; endif; wp_reset_query();
+                                endwhile; else: echo "<h3 class='p-10' style='font-weight: 600'>!!! Não Foram encontrados vagas que correspondem a sua pesquisa</h3>"; endif;
                             ?>
                 
                     
